@@ -75,11 +75,12 @@ endif
 " Options
 let g:dein#install_check_diff  = v:true
 
-" Load plugins
+" Setting up dein
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     let tomls = glob(s:toml_dir . "/*.toml")
+
     for toml in split(tomls, "\n")
         call dein#load_toml(toml, {})
     endfor
@@ -95,6 +96,6 @@ endif
 
 " Required
 filetype plugin indent on
-syntax enable
+syntax on
 
 " }
