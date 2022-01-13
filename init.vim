@@ -46,16 +46,6 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 
 
 "
-" autoread {
-"
-set autoread
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-" }
-
-
-"
 " dein {
 "
 
