@@ -5,6 +5,10 @@ if &compatible
     set nocompatible
 endif
 
+augroup Init
+    autocmd!
+augroup END
+
 set number
 set nowrap
 
