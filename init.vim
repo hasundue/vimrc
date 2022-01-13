@@ -72,7 +72,7 @@ if dein#load_state(s:dein_dir)
     let tomls = glob(s:toml_dir . "/*.toml")
 
     for toml in split(tomls, "\n")
-        call dein#load_toml(toml, {})
+        call dein#load_toml(toml, {'lazy': 1})
     endfor
 
     call dein#end()
