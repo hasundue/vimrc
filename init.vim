@@ -73,8 +73,13 @@ let g:dein#install_check_diff  = v:true
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
+    " Let dein manage dein
+    call dein#add(s:dein_dir)
+
+    " List of plugin toml files
     let tomls = glob(s:toml_dir . "/*.toml")
 
+    " Load each plugin
     for toml in split(tomls, "\n")
         call dein#load_toml(toml, {})
     endfor
