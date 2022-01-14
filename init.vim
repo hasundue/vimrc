@@ -18,6 +18,8 @@ set shiftwidth=4
 
 set clipboard+=unnamedplus
 
+let g:netrw_liststyle=3
+
 " }
 
 
