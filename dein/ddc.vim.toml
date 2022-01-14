@@ -11,16 +11,15 @@ depends = [
 
     # Sources
     'Shougo/ddc-around',
+    'LumaKernel/ddc-file',
 ]
-
-hook_add_source = '''
-'''
 
 hook_post_source = '''
     call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
     call ddc#custom#patch_global('sources', [
     \   'around',
+    \   'file',
     \ ])
 
     call ddc#custom#patch_global('sourceOptions', {
@@ -28,6 +27,11 @@ hook_post_source = '''
     \       'matchers': ['matcher_fuzzy'],
     \       'sorters': ['sorter_fuzzy'],
     \       'converters': ['converter_fuzzy'],
+    \   },
+    \   'file': {
+    \       'mark': 'F',
+    \       'isVolatile': v:true,
+    \       'forceCompletionPattern': '\S/\S*'
     \   },
     \ })
 
@@ -50,3 +54,6 @@ repo = 'tani/ddc-fuzzy'
 
 [[plugins]]
 repo = 'Shougo/ddc-around'
+
+[[plugins]]
+repo = 'LumaKernel/ddc-file'
