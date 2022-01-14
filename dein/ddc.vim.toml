@@ -1,0 +1,52 @@
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+
+depends = [
+    # Essentials
+    'vim-denops/denops.vim',
+    'Shougo/pum.vim',
+
+    # Matcher
+    'tani/ddc-fuzzy'
+
+    # Sources
+    'Shougo/ddc-around',
+]
+
+hook_add_source = '''
+'''
+
+hook_post_source = '''
+    call ddc#custom#patch_global('completionMenu', 'pum.vim')
+
+    call ddc#custom#patch_global('sources', [
+    \   'around',
+    \ ])
+
+    call ddc#custom#patch_global('sourceOptions', {
+    \   '_': {
+    \       'matchers': ['matcher_fuzzy'],
+    \       'sorters': ['sorter_fuzzy'],
+    \       'converters': ['converter_fuzzy'],
+    \   },
+    \ })
+
+    call ddc#enable()
+
+    inoremap <silent><expr> <TAB>
+        \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+        \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+        \ '<TAB>' : ddc#manual_complete()
+
+    inoremap <C-n> <Cmd>call pum#map#select_relative(+1)<CR>
+    inoremap <C-p> <Cmd>call pum#map#select_relative(-1)<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/pum.vim'
+
+[[plugins]]
+repo = 'tani/ddc-fuzzy'
+
+[[plugins]]
+repo = 'Shougo/ddc-around'
