@@ -37,6 +37,18 @@ hook_post_source = '''
     \   },
     \ })
 
+    call ddc#enable()
+
+    inoremap <silent><expr> <TAB>
+        \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+        \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+        \ '<TAB>' : ddc#manual_complete()
+
+    inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+
+    inoremap <C-n> <Cmd>call pum#map#select_relative(+1)<CR>
+    inoremap <C-p> <Cmd>call pum#map#select_relative(-1)<CR>
+
     "
     " Commandline completion {
     "
@@ -51,9 +63,11 @@ hook_post_source = '''
     nnoremap : <Cmd>call CommandlinePre()<CR>:
 
     function! CommandlinePre() abort
-        cnoremap <expr> <Tab>
-                    \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-                    \ ddc#manual_complete()
+        cnoremap <silent><expr> <TAB>
+            \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+            \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+            \ '<TAB>' : ddc#manual_complete()
+
         cnoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 
         " Overwrite sources
@@ -75,18 +89,6 @@ hook_post_source = '''
     endfunction
 
     " }
-
-    call ddc#enable()
-
-    inoremap <silent><expr> <TAB>
-        \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
-        \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-        \ '<TAB>' : ddc#manual_complete()
-
-    inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-
-    inoremap <C-n> <Cmd>call pum#map#select_relative(+1)<CR>
-    inoremap <C-p> <Cmd>call pum#map#select_relative(-1)<CR>
 '''
 
 [[plugins]]
