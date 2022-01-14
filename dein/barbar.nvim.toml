@@ -1,9 +1,6 @@
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
-
-on_event = 'BufNew'
-
-hook_post_source = '''
+hook_add = '''
     let bufferline = get(g:, 'bufferline', {})
 
     let bufferline.auto_hide = v:true
