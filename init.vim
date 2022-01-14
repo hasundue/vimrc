@@ -91,13 +91,14 @@ endif
 " Install plugins if not
 if dein#check_install()
     call dein#install()
+    call dein#recache_runtimepath()
 endif
 
 " Uninstall unused plugins
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
-  call map(s:removed_plugins, "delete(v:val, 'rf')")
-  call dein#recache_runtimepath()
+    call map(s:removed_plugins, "delete(v:val, 'rf')")
+    call dein#recache_runtimepath()
 endif
 
 " Required
