@@ -8,6 +8,6 @@ on_ft = 'julia'
 hook_source = '''
     let g:slime_target = 'neovim'
     let g:slime_no_mappings = 1
-    xmap <leader><CR> <Plug>SlimeRegionSend
-    nmap <leader><CR> <Plug>SlimeParagraphSend
+    xmap <LocalLeader><CR> <Plug>SlimeRegionSend
+    nmap <LocalLeader><CR> <Plug>SlimeParagraphSend
 '''
