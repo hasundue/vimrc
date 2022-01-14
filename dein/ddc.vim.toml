@@ -13,6 +13,7 @@ depends = [
     'Shougo/ddc-around',
     'Shougo/ddc-cmdline',
     'Shougo/ddc-cmdline-history',
+    'Shougo/ddc-nvim-lsp',
     'LumaKernel/ddc-file',
 ]
 
@@ -20,8 +21,9 @@ hook_post_source = '''
     call ddc#custom#patch_global('completionMenu', 'pum.vim')
 
     call ddc#custom#patch_global('sources', [
-    \   'around',
+    \   'nvim-lsp',
     \   'file',
+    \   'around',
     \ ])
 
     call ddc#custom#patch_global('sourceOptions', {
@@ -29,6 +31,12 @@ hook_post_source = '''
     \       'matchers': ['matcher_fuzzy'],
     \       'sorters': ['sorter_fuzzy'],
     \       'converters': ['converter_fuzzy'],
+    \   },
+    \   'nvim-lsp': {
+    \       'mark': 'L',
+    \   },
+    \   'around': {
+    \       'mark': 'A',
     \   },
     \   'file': {
     \       'mark': 'F',
@@ -108,3 +116,6 @@ repo = 'Shougo/ddc-cmdline-history'
 
 [[plugins]]
 repo = 'LumaKernel/ddc-file'
+
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
