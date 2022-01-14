@@ -1,0 +1,10 @@
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+hook_add = '''
+    if !isdirectory(exepath('deno')
+        execute '!curl -fsSL https://deno.land/x/install/install.sh | sh'
+    endif
+'''
+hook_post_update = '''
+    execute '!deno upgrade'
+'''
