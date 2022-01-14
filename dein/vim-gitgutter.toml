@@ -1,0 +1,5 @@
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    nnoremap <leader>gu :GitGutterUndoHunk<CR>
+'''
